@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: InternHub Registration Portal API
+  version: 1.0.0
+  description: API documentation for Cognifyz Task 7
+servers:
+  - url: http://localhost:5000/api
+paths:
+  /auth/google:
+    get:
+      summary: Google OAuth Login
+      responses:
+        '302':
+          description: Redirects to Google
+  /github/user/{username}:
+    get:
+      summary: Get GitHub User Profile
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+  /github/repos/{username}:
+    get:
+      summary: Get GitHub User Repositories
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+  /resume/analyze:
+    post:
+      summary: Analyze Resume
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                resume:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Analysis successful
+  /recommendations:
+    post:
+      summary: Get Career Recommendations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                skills:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Successful response
