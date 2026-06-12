@@ -76,3 +76,6 @@ This is a complete full-stack application built for Cognifyz Technologies Full S
 
 Once the backend is running, you can access the interactive Swagger documentation at:
 `http://localhost:5000/api-docs`
+
+Built by Ananthapadmanabhan 
+
